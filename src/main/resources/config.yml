@@ -1,0 +1,26 @@
+games-count: 1
+lobby-world: world
+first-phase-duration: 30
+second-phase-duration: 30
+third-phase-duration: 30
+deathmatch-duration: 30
+restarting-duration: 10
+first-phase-radius: 150
+second-phase-radius: 100
+third-phase-radius: 50
+db:
+  connection:
+    host: 'localhost:5432'
+    db-name: postgres
+    username: postgres
+    password: root
+  create-table-if-does-not-exist: false
+  sql-queries:
+    # Placeholders: ${player.name}
+    create-sql: "INSERT INTO player(name, kills, wins, games, deaths, chest_looten) VALUES ('${player.name}', 0, 0, 0, 0, 0);"
+    # Placeholders: ${player.name}
+    read-sql: "SELECT kills, wins, games, deaths, chest_looten FROM player WHERE name = '${player.name}';"
+    # Placeholders: ${player.kills}, ${player.wins}, ${player.games}, ${player.deaths}, ${player.chests-looten}, ${player.name}
+    update-sql: "UPDATE player SET kills = ${player.kills}, wins = ${player.wins}, games = ${player.games}, deaths = ${player.deaths}, chest_looten = ${player.chests-looten} WHERE name = '${player.name}';"
+    # Placeholders: ${player.name}
+    delete-sql: "DELETE FROM player WHERE name = '${player.name}';"

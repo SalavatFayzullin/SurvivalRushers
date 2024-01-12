@@ -1,0 +1,4 @@
+main: ru.reactioner.survival_rushers.MainPlugin
+name: SurvivalRushers
+version: 1.0
+api-version: 1.20
